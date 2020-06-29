@@ -33,7 +33,14 @@ namespace C_sharp_Practice
             Console.WriteLine("[{0}]", string.Join(", ", ArrayOfMultiples(7, 5)));
             Console.WriteLine("[{0}]", string.Join(", ", ArrayOfMultiples(12, 10)));
             Console.WriteLine("[{0}]", string.Join(", ", ArrayOfMultiples(17, 6)));
-            
+
+            // Problem 3 tests
+            Console.WriteLine(ReverseCase("Happy Birthday"));
+            Console.WriteLine(ReverseCase("MANY THANKS"));
+            Console.WriteLine(ReverseCase("sPoNtAnEoUs"));
+
+
+            Console.WriteLine("End");
 
         }
 
@@ -85,7 +92,40 @@ namespace C_sharp_Practice
         }
 
 
+        //problem #3
+        // Reverse the Case
+        // site: https://edabit.com/challenge/99oN5igrbXddAjHEL
+        // Given a string, create a function to reverse the case. All
+        // lower-cased letters should be upper-cased, and vice versa.
+        public static string ReverseCase(string str)
+        {
+            String newString = "";
+            foreach(char letter in str)
+            {
+                if (Char.IsLetter(letter))
+                {
+                    if (Char.IsUpper(letter))
+                    {
+                        newString += Char.ToLower(letter);
+                    }
+                    else if (Char.IsLower(letter))
+                    {
+                        newString += Char.ToUpper(letter);
+                    }
+                    else
+                    {
+                        newString += letter;
+                    }
+                }
+                else
+                {
+                    newString += letter;
+                }
+                
+            }
 
+            return newString;
+        }
 
 
     }
