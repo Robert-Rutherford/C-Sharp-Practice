@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 namespace C_sharp_Practice
 {
@@ -29,6 +28,12 @@ namespace C_sharp_Practice
             testData = new double[][] { item1, item2, item3 };
             largest1 = FindLargest(testData);
             Console.WriteLine("[{0}]", string.Join(", ", largest1));
+
+            // Problem 2 tests
+            Console.WriteLine("[{0}]", string.Join(", ", ArrayOfMultiples(7, 5)));
+            Console.WriteLine("[{0}]", string.Join(", ", ArrayOfMultiples(12, 10)));
+            Console.WriteLine("[{0}]", string.Join(", ", ArrayOfMultiples(17, 6)));
+            
 
         }
 
@@ -62,5 +67,26 @@ namespace C_sharp_Practice
             }
             return returnList;
         }
+
+
+        //problem #2
+        // Array of Multiples
+        // site: https://edabit.com/challenge/2QvnWexKoLfcJkSsc
+        // Create a function that takes two numbers as arguments (num, length)
+        //and returns an array of multiples of num up to length.
+        public static int[] ArrayOfMultiples(int num, int length)
+        {
+            int[] multiples = new int[length];
+            for(int i = 1; i <= length; i++)
+            {
+                multiples[i - 1] = num * i;
+            }
+            return multiples;
+        }
+
+
+
+
+
     }
 }
