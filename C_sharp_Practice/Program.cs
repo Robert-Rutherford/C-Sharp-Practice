@@ -39,6 +39,11 @@ namespace C_sharp_Practice
             Console.WriteLine(ReverseCase("MANY THANKS"));
             Console.WriteLine(ReverseCase("sPoNtAnEoUs"));
 
+            //Problem 4 test
+            Console.WriteLine(SortDescending(123));
+            Console.WriteLine(SortDescending(2619805));
+            Console.WriteLine(SortDescending(73065));
+
 
             Console.WriteLine("End");
 
@@ -127,6 +132,30 @@ namespace C_sharp_Practice
             return newString;
         }
 
+
+        //problem #4
+        // Sort Numbers in Descending Order
+        // site: https://edabit.com/challenge/N5G33s49LDXdhLdsT
+        // Create a function that takes any nonnegative number as an argument
+        // and return it with it's digits in descending order. Descending order
+        // is when you sort from highest to lowest.
+        public static int SortDescending(int num)
+        {
+            int newnum = 0;
+
+            string strNum = num.ToString();
+            char[] strArray = strNum.ToCharArray();
+            int[] convertNums = new int[strArray.Length];
+            for(int i = 0; i < strArray.Length; i++)
+            {
+                convertNums[i] = (int)Char.GetNumericValue(strArray[i]);
+            }
+            Array.Sort(convertNums);
+            Array.Reverse(convertNums);
+            newnum = Int32.Parse(String.Join("", convertNums));
+
+            return newnum;
+        }
 
     }
 }
