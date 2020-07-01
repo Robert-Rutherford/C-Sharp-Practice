@@ -8,6 +8,10 @@ namespace C_sharp_Practice
         {
             //Console.WriteLine("Hello World!");
             // Problem 1 tests
+            Console.WriteLine(" ");
+            Console.WriteLine("Problem 1");
+
+
             double[] item1 = { 4, 2, 7, 1 };
             double[] item2 = { 20, 70, 40, 90 };
             double[] item3 = { 1, 2, 0 };
@@ -29,20 +33,41 @@ namespace C_sharp_Practice
             largest1 = FindLargest(testData);
             Console.WriteLine("[{0}]", string.Join(", ", largest1));
 
+            
+
             // Problem 2 tests
+            Console.WriteLine(" ");
+            Console.WriteLine("Problem 2");
+
             Console.WriteLine("[{0}]", string.Join(", ", ArrayOfMultiples(7, 5)));
             Console.WriteLine("[{0}]", string.Join(", ", ArrayOfMultiples(12, 10)));
             Console.WriteLine("[{0}]", string.Join(", ", ArrayOfMultiples(17, 6)));
 
             // Problem 3 tests
+            Console.WriteLine(" ");
+            Console.WriteLine("Problem 3");
+
             Console.WriteLine(ReverseCase("Happy Birthday"));
             Console.WriteLine(ReverseCase("MANY THANKS"));
             Console.WriteLine(ReverseCase("sPoNtAnEoUs"));
 
             //Problem 4 test
+            Console.WriteLine(" ");
+            Console.WriteLine("Problem 4");
+
             Console.WriteLine(SortDescending(123));
             Console.WriteLine(SortDescending(2619805));
             Console.WriteLine(SortDescending(73065));
+
+            //Problem 5 test
+            Console.WriteLine(" ");
+            Console.WriteLine("Problem 5");
+
+            Console.WriteLine(HighLow("1 2 3 4 5"));
+            Console.WriteLine(HighLow("1 2 -3 4 5"));
+            Console.WriteLine(HighLow("1 9 3 4 -5"));
+            Console.WriteLine(HighLow("13"));
+            
 
 
             Console.WriteLine("End");
@@ -157,5 +182,45 @@ namespace C_sharp_Practice
             return newnum;
         }
 
+
+        /* problem #5
+        Return the Highest and Lowest Numbers
+        site: https://edabit.com/challenge/zcuASzWmpFHpPtrbH
+        Create a function that accepts a string of space separated numbers
+        and returns the highest and lowest number (as a string).
+        */
+        public static string HighLow(string str)
+        {
+            string[] splitNums = str.Split(' ');
+            int highest = 0;
+            int lowest = 0;
+            bool start = true;
+            foreach(string num in splitNums)
+            {
+                int numInt = Int32.Parse(num);
+                if (start)
+                {
+                    highest = numInt;
+                    lowest = numInt;
+                    start = false;
+                }
+                else
+                {
+                    if(numInt < lowest)
+                    {
+                        lowest = numInt;
+                    }
+                    if(numInt > highest)
+                    {
+                        highest = numInt;
+                    }
+                }
+            }
+
+            return highest + " " +lowest;
+        }
+
+
     }
 }
+
