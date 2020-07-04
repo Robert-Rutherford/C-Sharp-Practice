@@ -68,7 +68,7 @@ namespace C_sharp_Practice
             Console.WriteLine(HighLow("1 9 3 4 -5"));
             Console.WriteLine(HighLow("13"));
 
-            //Problem 5 test
+            //Problem 6 test
             Console.WriteLine(" ");
             Console.WriteLine("Problem 6");
             Console.WriteLine(IsStrangePair("ratio", "orator"));
@@ -76,6 +76,16 @@ namespace C_sharp_Practice
             Console.WriteLine(IsStrangePair("bush", "hubris"));
             Console.WriteLine(IsStrangePair("", ""));
             Console.WriteLine(IsStrangePair("", "bat"));
+
+            //Problem 7 test
+            Console.WriteLine(" ");
+            Console.WriteLine("Problem 7");
+            int[] arr = { 1, 2, 3, 4, 0, 0, -3, -2 };
+            Console.WriteLine(MajorSum(arr));
+            arr = new int[] { -4, -8, -12, -3, 4, 7, 1, 3, 0, 0, 0, 0 };
+            Console.WriteLine(MajorSum(arr));
+            arr = new int[] { 0, 0, 0, 0, 0, 1, 2, -3 };
+            Console.WriteLine(MajorSum(arr));
 
             Console.WriteLine("End");
 
@@ -150,7 +160,7 @@ namespace C_sharp_Practice
                         newString += Char.ToUpper(letter);
       }
                     else
-                    {
+              {
                         newString += letter;
                     }
                 }
@@ -257,6 +267,67 @@ namespace C_sharp_Practice
             }
             return true;
         }
+
+        /* problem #7
+        The Major Sum
+        site: https://edabit.com/challenge/8qkRcwf4ARtXpdwEW
+        Create a function that takes an integer array and return the biggest
+        between positive sum, negative sum, or 0s count. The major is
+        understood as the greatest absolute.
+
+        arr = {1,2,3,4,0,0,-3,-2}, the function has to return 10, because:
+
+        Positive sum = 1+2+3+4 = 10
+        Negative sum = (-3)+(-2) = -5
+        0s count = 2 (there are two zeros in array)
+        */
+
+        public static int MajorSum(int[] arr)
+        {
+            int zeros = 0;
+            int negativeSum = 0;
+            int positiveSum = 0;
+
+            foreach(int num in arr)
+            {
+                if(num == 0)
+                {
+                    zeros++;
+                }
+                else if(num < 0)
+                {
+                    negativeSum += num;
+                }
+                else if(num > 0)
+                {
+                    positiveSum += num;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+
+            if(zeros > positiveSum && zeros > Math.Abs(negativeSum))
+            {
+                return zeros;
+            }
+            else if(positiveSum > zeros && positiveSum > Math.Abs(negativeSum))
+            {
+                return positiveSum;
+            }
+            else if(Math.Abs(negativeSum) > positiveSum && Math.Abs(negativeSum) > zeros)
+            {
+                return negativeSum;
+            }
+            else
+            {
+                return 0;
+            }
+
+            
+        }
+
     }
 }
 
