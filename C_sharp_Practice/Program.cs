@@ -67,8 +67,15 @@ namespace C_sharp_Practice
             Console.WriteLine(HighLow("1 2 -3 4 5"));
             Console.WriteLine(HighLow("1 9 3 4 -5"));
             Console.WriteLine(HighLow("13"));
-            
 
+            //Problem 5 test
+            Console.WriteLine(" ");
+            Console.WriteLine("Problem 6");
+            Console.WriteLine(IsStrangePair("ratio", "orator"));
+            Console.WriteLine(IsStrangePair("sparkling", "groups"));
+            Console.WriteLine(IsStrangePair("bush", "hubris"));
+            Console.WriteLine(IsStrangePair("", ""));
+            Console.WriteLine(IsStrangePair("", "bat"));
 
             Console.WriteLine("End");
 
@@ -141,7 +148,7 @@ namespace C_sharp_Practice
                     else if (Char.IsLower(letter))
                     {
                         newString += Char.ToUpper(letter);
-                    }
+      }
                     else
                     {
                         newString += letter;
@@ -217,10 +224,39 @@ namespace C_sharp_Practice
                 }
             }
 
-            return highest + " " +lowest;
+            return highest + " " + lowest;
         }
 
+        /* problem #6
+        Strange Pair
+        site: https://edabit.com/challenge/8Sc582yHht2auBpCY
+        A pair of strings form a strange pair if both of the following are true:
+            The 1st string's first letter = 2nd string's last letter.
+            The 1st string's last letter = 2nd string's first letter.
+        Create a function that returns true if a pair of strings constitutes
+        a strange pair, and false otherwise.
+        */
+        public static bool IsStrangePair(string str1, string str2)
+        {
+            if(str1.Length == 0 && str2.Length == 0)
+            {
+                return true;
+            }
+            if(str1.Length == 0 ^ str2.Length == 0)
+            {
+                return false;
+            }
 
+            if(str1[0] != str2[str2.Length - 1])
+            {
+                return false;
+            }
+            if(str1[str1.Length - 1] != str2[0])
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
 
