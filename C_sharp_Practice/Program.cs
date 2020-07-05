@@ -33,7 +33,7 @@ namespace C_sharp_Practice
             largest1 = FindLargest(testData);
             Console.WriteLine("[{0}]", string.Join(", ", largest1));
 
-            
+
 
             // Problem 2 tests
             Console.WriteLine(" ");
@@ -86,6 +86,13 @@ namespace C_sharp_Practice
             Console.WriteLine(MajorSum(arr));
             arr = new int[] { 0, 0, 0, 0, 0, 1, 2, -3 };
             Console.WriteLine(MajorSum(arr));
+
+            //Problem 8 test
+            Console.WriteLine(" ");
+            Console.WriteLine("Problem 8");
+            Console.WriteLine(IsSmooth("Marta appreciated deep perpendicular right trapezoids"));
+            Console.WriteLine(IsSmooth("Someone is outside the doorway"));
+            Console.WriteLine(IsSmooth("She eats super righteously"));
 
             Console.WriteLine("End");
 
@@ -327,6 +334,37 @@ namespace C_sharp_Practice
 
             
         }
+
+        /* problem #8
+        Smooth Sentences
+        site: https://edabit.com/challenge/SkY5Nw3rS7WvkQmFc
+        Carlos is a huge fan of something he calls smooth sentences. A
+        smooth sentence is one where the last letter of each word is identical to
+        the first letter the following word.
+
+        To illustrate, the following would be a smooth sentence:
+        "Carlos swam masterfully."
+
+        Since "Carlos" ends with an "s" and swam begins with an "s" and
+        swam ends with an "m" and masterfully begins with an "m".
+        */
+        public static bool IsSmooth(string sentence)
+        {
+            string[] words = sentence.Split(' ');
+
+            for(int i = 1; i < words.Length; i++)
+            {
+                int lastWordLength = words[i - 1].Length;
+                char lastLetter = words[i - 1][lastWordLength - 1];
+                char firstLetter = words[i][0];
+                if(Char.ToLower(lastLetter) != Char.ToLower(firstLetter))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
 
     }
 }
