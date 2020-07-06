@@ -94,6 +94,14 @@ namespace C_sharp_Practice
             Console.WriteLine(IsSmooth("Someone is outside the doorway"));
             Console.WriteLine(IsSmooth("She eats super righteously"));
 
+            //Problem 9 test
+            Console.WriteLine(" ");
+            Console.WriteLine("Problem 9");
+            Console.WriteLine(reversedBinaryInteger(10));
+            Console.WriteLine(reversedBinaryInteger(12));
+            Console.WriteLine(reversedBinaryInteger(25));
+            Console.WriteLine(reversedBinaryInteger(45));
+
             Console.WriteLine("End");
 
         }
@@ -365,6 +373,22 @@ namespace C_sharp_Practice
             return true;
         }
 
+        /* problem #9
+        Reversing a Binary String
+        site: https://edabit.com/challenge/TgtrCxdZxjaNBKvk3
+        Write a function that takes an integer n, reverses the binary
+        representation of that integer, and returns the new integer from the
+        reversed binary.
+        */
+        public static int reversedBinaryInteger(int num)
+        {
+            string binaryConvert = Convert.ToString(num, 2);
+            char[] charConvert = binaryConvert.ToCharArray();
+            Array.Reverse(charConvert);
+            string reverseBinary = new string(charConvert);
+            int reverseNum = Convert.ToInt32(reverseBinary,2);
+            return reverseNum;
+        }
 
     }
 }
