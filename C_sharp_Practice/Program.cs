@@ -102,6 +102,17 @@ namespace C_sharp_Practice
             Console.WriteLine(reversedBinaryInteger(25));
             Console.WriteLine(reversedBinaryInteger(45));
 
+            //Problem 10 test
+            Console.WriteLine(" ");
+            Console.WriteLine("Problem 10");
+            Console.WriteLine(IsValidHexCode("#CD5C5C"));
+            Console.WriteLine(IsValidHexCode("#EAECEE"));
+            Console.WriteLine(IsValidHexCode("#eaecee"));
+            Console.WriteLine(IsValidHexCode("#CD5C58C"));
+            Console.WriteLine(IsValidHexCode("#CD5C5Z"));
+            Console.WriteLine(IsValidHexCode("#CD5C&C"));
+            Console.WriteLine(IsValidHexCode("CD5C5C"));
+
             Console.WriteLine("End");
 
         }
@@ -388,6 +399,39 @@ namespace C_sharp_Practice
             string reverseBinary = new string(charConvert);
             int reverseNum = Convert.ToInt32(reverseBinary,2);
             return reverseNum;
+        }
+
+        /* problem #10
+        Valid Hex Code
+        site: https://edabit.com/challenge/8tyXtHqAT3LAuHMqu
+        Create a function that determines whether a string is a valid hex code.
+
+        A hex code must begin with a pound key # and is exactly 6 characters
+        in length.
+        Each character must be a digit from 0-9 or an alphabetic character
+        from A-F. All alphabetic characters may be uppercase or lowercase.
+        */
+        public static bool IsValidHexCode(string str)
+        {
+            char[] aToF = { 'a', 'b', 'c', 'd', 'e', 'f' };
+            char[] charList = str.ToCharArray();
+            if(charList[0] != '#' || charList.Length != 7)
+            {
+                return false;
+            }
+            for (int i = 1; i < charList.Length; i++)
+            {
+                if (!Char.IsDigit(charList[i]) && !Char.IsLetter(charList[i]))
+                {
+                    return false;
+                }
+                if (Char.IsLetter(charList[i]) &&
+                    !Array.Exists(aToF, element => element == Char.ToLower(charList[i])))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
     }
