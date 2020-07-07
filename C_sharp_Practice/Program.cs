@@ -113,6 +113,15 @@ namespace C_sharp_Practice
             Console.WriteLine(IsValidHexCode("#CD5C&C"));
             Console.WriteLine(IsValidHexCode("CD5C5C"));
 
+
+            //Problem 11 test
+            Console.WriteLine(" ");
+            Console.WriteLine("Problem 11");
+            Console.WriteLine(IsParselTongue("Sshe ssselects to eat that apple. "));
+            Console.WriteLine(IsParselTongue("She ssselects to eat that apple. "));
+            Console.WriteLine(IsParselTongue("Beatrice samples lemonade"));
+            Console.WriteLine(IsParselTongue("You ssseldom sssspeak sso boldly, ssso messmerizingly."));
+
             Console.WriteLine("End");
 
         }
@@ -431,6 +440,49 @@ namespace C_sharp_Practice
                     return false;
                 }
             }
+            return true;
+        }
+
+        /* problem #11
+        Parseltongue
+        site: https://edabit.com/challenge/q5GcPcJRibksZBDQX
+        Hermione has come up with a precise formula for determining whether or
+        not a phrase was ssspoken by a parssseltongue (a reference from the
+        Harry Potter universe; the language of ssserpents and those who can
+        converse with them).
+
+        Each word in a sssentence must contain either:
+
+        At least 2 instances of the letter "s" (i.e. must be together ss), or...
+        Zero instances of the letter "s".
+        */
+        public static bool IsParselTongue(string sentence)
+        {
+            bool sCombo = false;
+            char[] letters = sentence.ToCharArray();
+            for(int i = 0; i < letters.Length; i++)
+            {
+                
+                if(Char.ToLower(letters[i]) == 's' && !sCombo)
+                {
+                    if((i+1 == letters.Length)
+                        || Char.ToLower(letters[i + 1]) != 's')
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        sCombo = true;
+                    }
+                    
+                }
+                if(Char.ToLower(letters[i]) != 's' && sCombo)
+                {
+                    sCombo = false;
+                }
+                
+            }
+
             return true;
         }
 
