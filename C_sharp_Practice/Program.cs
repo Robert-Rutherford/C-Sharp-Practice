@@ -122,6 +122,13 @@ namespace C_sharp_Practice
             Console.WriteLine(IsParselTongue("Beatrice samples lemonade"));
             Console.WriteLine(IsParselTongue("You ssseldom sssspeak sso boldly, ssso messmerizingly."));
 
+            //Problem 12 test
+            Console.WriteLine(" ");
+            Console.WriteLine("Problem 12");
+            Console.WriteLine(AverageWordLength("A B C."));
+            Console.WriteLine(AverageWordLength("What a gorgeous day."));
+            Console.WriteLine(AverageWordLength("Dude, this is so awesome!"));
+
             Console.WriteLine("End");
 
         }
@@ -485,6 +492,53 @@ namespace C_sharp_Practice
 
             return true;
         }
+        /* problem #12
+        Possible Palindrome
+        site: https://edabit.com/challenge/z84RP4x6TqLdW4iva
+        Create a function that takes in a sentence and returns the average
+        length of each word in that sentence. Round your result to two decimal
+        places.
+        */
+        public static double AverageWordLength(string str)
+        {
+            string[] words = str.Split(' ');
+            double total = 0;
+            foreach(string word in words)
+            {
+                int count = 0;
+                if (Char.IsLetter(word[word.Length - 1]))
+                {
+                    count = word.Length;
+                }
+                else
+                {
+                    count = word.Length - 1;
+                }
+
+                total += count;
+            }
+            return total/words.Length;
+        }
+
+
+        /* problem #13
+        Possible Palindrome
+        site: https://edabit.com/challenge/q5GcPcJRibksZBDQX
+        Create a function that determines whether it is possible to build a
+        palindrome from the characters in a string.
+        */
+        public static bool PossiblePalindrome(string str)
+        {
+         
+
+
+
+
+
+            return true;
+        }
+
+
 
     }
 }
