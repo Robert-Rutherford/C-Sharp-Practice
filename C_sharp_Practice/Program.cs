@@ -129,6 +129,15 @@ namespace C_sharp_Practice
             Console.WriteLine(AverageWordLength("What a gorgeous day."));
             Console.WriteLine(AverageWordLength("Dude, this is so awesome!"));
 
+            //Problem 13 test
+            Console.WriteLine(" ");
+            Console.WriteLine("Problem 13");
+            Console.WriteLine(TextToNumberBinary("zero one zero one zero one zero one"));
+            Console.WriteLine(TextToNumberBinary("Zero one zero ONE zero one zero one"));
+            Console.WriteLine(TextToNumberBinary("zero one zero one zero one zero one one two"));
+            Console.WriteLine(TextToNumberBinary("zero one zero one zero one zero three"));
+            Console.WriteLine(TextToNumberBinary("one one"));
+
             Console.WriteLine("End");
 
         }
@@ -522,20 +531,43 @@ namespace C_sharp_Practice
 
 
         /* problem #13
-        Possible Palindrome
-        site: https://edabit.com/challenge/q5GcPcJRibksZBDQX
-        Create a function that determines whether it is possible to build a
-        palindrome from the characters in a string.
+        Convert "Zero" and "One" to "1" and "0"
+        site: https://edabit.com/challenge/yrL3zkSECbde2Dc8i
+        Create a function that takes a string as an argument. The function must
+        return a string containing 1s and 0s based on the string argument's
+        words. If any word in the argument is not equal to "zero" or "one"
+        (case insensitive), you should ignore it. The returned string's length
+        should be a multiple of 8, if the string is not a multiple of 8 you
+        should remove the numbers in excess.
         */
-        public static bool PossiblePalindrome(string str)
+        public static string TextToNumberBinary(string str)
         {
-         
+            string[] words = str.Split(' ');
+            string binary = "";
+            foreach(string word in words)
+            {
+                if(word.ToLower() == "zero")
+                {
+                    binary += "0";
+                }
+                else if(word.ToLower() == "one")
+                {
+                    binary += "1";
+                }
+            }
 
-
-
-
-
-            return true;
+            if( binary.Length < 8)
+            {
+                return "";
+            }
+            else if( binary.Length % 8 != 0)
+            {
+                return binary.Substring(0, binary.Length - (binary.Length % 8));
+            }
+            else
+            {
+                return binary;
+            }
         }
 
 
