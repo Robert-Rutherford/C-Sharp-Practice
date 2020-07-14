@@ -138,6 +138,13 @@ namespace C_sharp_Practice
             Console.WriteLine(TextToNumberBinary("zero one zero one zero one zero three"));
             Console.WriteLine(TextToNumberBinary("one one"));
 
+            //Problem 14 test
+            Console.WriteLine(" ");
+            Console.WriteLine("Problem 14");
+            Console.WriteLine(LongestCommonEnding("multiplication", "ration"));
+            Console.WriteLine(LongestCommonEnding("potent", "tent"));
+            Console.WriteLine(LongestCommonEnding("skyscraper", "carnivore"));
+
             Console.WriteLine("End");
 
         }
@@ -570,7 +577,39 @@ namespace C_sharp_Practice
             }
         }
 
+        /* problem #14
+        Longest Common Ending
+        site: https://edabit.com/challenge/zRNkYPzy8oviqkrWc
+        Write a function that returns the longest common ending between two strings.
+        */
+        public static string LongestCommonEnding(string str1, string str2)
+        {
+            char[] letters1 = str1.ToCharArray();
+            char[] letters2 = str2.ToCharArray();
+            int shortest = 0;
+            string match = "";
+            if (letters1.Length > letters2.Length)
+            {
+                shortest = letters2.Length;
+            }
+            else
+            {
+                shortest = letters1.Length;
+            }
 
+            for(int i = 1; i < shortest; i++)
+            {
+                if(letters1[letters1.Length - i] != letters2[letters2.Length - i])
+                {
+                    return match;
+                }
+                else
+                {
+                    match = letters1[letters1.Length - i] + match;
+                }
+            }
+            return match;
+        }
 
     }
 }
